@@ -1,0 +1,2 @@
+如何处理不同设备尺寸缩放的问题
+https://medium.com/flutter-community/flutter-effectively-scale-ui-according-to-different-screen-sizes-2cb7c115ea0a
