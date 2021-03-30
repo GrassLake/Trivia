@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 
 import 'SizeConfig.dart';
 
@@ -22,9 +23,8 @@ class ScaffoldMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: DashBoardAppBar(height: SizeConfig.safeBlockVertical * 5),
-      body: Container(),
-    );
+        appBar: DashBoardAppBar(height: SizeConfig.safeBlockVertical * 5),
+        body: Center(child: VerticalSlider()));
   }
 }
 
@@ -129,5 +129,40 @@ class AppBarRightButton extends StatelessWidget {
       onPressed: onPressed,
       shape: const BeveledRectangleBorder(),
     );
+  }
+}
+
+class VerticalSlider extends StatefulWidget {
+  VerticalSlider({Key key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _VerticalSlider();
+  }
+}
+
+class _VerticalSlider extends State<VerticalSlider> {
+  double lv = 0.0;
+
+  double uv = 500.0;
+
+  double currentValue = 77.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: FlutterSlider(
+      values: [currentValue],
+      max: 500.0,
+      min: 0.0,
+      axis: Axis.vertical,
+      onDragging: (handlerIndex, lowerValue, upperValue) {
+        lv = lowerValue;
+        uv = upperValue;
+        setState(() {
+          currentValue = lowerValue;
+        });
+      },
+    ));
   }
 }
