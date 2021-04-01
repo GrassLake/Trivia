@@ -34,7 +34,7 @@ class _EmbeddedDesktop extends State<EmbeddedDesktop> {
     SizeConfig().init(context);
 
     barContent = DashboardBar(height: SizeConfig.safeBlockVertical * 5);
-    displayContent = SettingScreen();
+    displayContent = Alarms_Warning_Screen();
     return Scaffold(
       appBar: barContent,
       body: displayContent,
